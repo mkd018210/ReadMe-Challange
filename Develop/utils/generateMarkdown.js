@@ -60,12 +60,7 @@ function generateMarkdown(answers) {
        3. ${num3}
        4. ${num4}
        5. ${num5}
-       6. ${num6}
-       7. ${num7}
-       8. ${num8}
-       9. ${num9}
   
-    
      ## Instillation
          ${instillation}
     

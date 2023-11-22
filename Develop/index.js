@@ -2,6 +2,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+const generateMarkdown = require('./utils/generateMarkdown')
 
 const questions = [
     {
@@ -15,6 +16,31 @@ const questions = [
         name: 'description'
     },
     {
+        type: "input",
+        message: "What is number one in your Table Of Contents.",
+        name: "num1"
+    },
+    {
+        type: "input",
+        message: "What is number two in your Table Of Contents.",
+        name: "num2"
+    },
+    {
+        type: "input",
+        message: "What is number three in your Table Of Contents.",
+        name: "num3"
+    },
+    {
+        type: "input",
+        message: "What is number four in your Table Of Contents.",
+        name: "num4"
+    },
+    {
+        type: "input",
+        message: "What is number five in your Table Of Contents.",
+        name: "num5"
+    },
+    {
         type: 'input',
         message: 'Write the installation instructions',
         name: 'installation'
@@ -23,6 +49,12 @@ const questions = [
         type: 'input',
         message: 'What is the usage information?',
         name:'usage'
+    },
+    {
+        type: "list",
+        message: "Pick a license for your README",
+        choices: ["MIT", "ISC", "IBM"],
+        name: "license"
     },
     {
         type: 'input',
@@ -34,6 +66,16 @@ const questions = [
         message: 'What are the testing instructions?',
         name: 'testing'
     },
+    {
+        type: "input",
+        message: "What is your GitHub Username?",
+        name: "questions"
+    },
+    {
+        type: "input",
+        message: "What is your email?",
+        name: "email"
+    },
     
 ];
 
@@ -43,9 +85,9 @@ inquirer
     .prompt(questions)
     .then((answers) => {
        
-        const html = getHtml(answers);
+        const markdown = getMarkdown(answers);
 
-        fs.writeFile('index.html', html, (err) => {
+        fs.writeFile('README.md', markdown, (err) => {
             if (err) {
                 console.error(err);
             } else {
@@ -55,8 +97,8 @@ inquirer
     });
 // TODO: Create a function to initialize app
 function init() {}
-const getHtml = (answers) => {
-    const { title, description, installation, usage, contribution, testing } = answers;
+const getMarkdown = (answers) => {
+    const { title, description, num1, num2, num3, num4, num5, installation, usage, license, contribution, testing, questions, email } = answers;
 
     return
 }
